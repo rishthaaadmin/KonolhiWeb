@@ -14,13 +14,7 @@
     { href: '/blog', label: 'Blog' }
   ];
 
-  const logoMark = `
-    <span class="logo-mark" aria-hidden="true">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M2 12c2.5-4 5-6 10-6s7.5 2 10 6c-2.5 4-5 6-10 6s-7.5-2-10-6Z"/>
-        <path d="M2 12h20" opacity="0.55"/>
-      </svg>
-    </span>`;
+  const logoMark = `<img class="brand-logo" src="/assets/konolhi-logo.png" alt="Konolhi" width="112" height="100">`;
 
   function currentPath() {
     let p = location.pathname.replace(/\.html$/, '').replace(/\/index$/, '/');
@@ -39,7 +33,7 @@
     <a class="skip-link" href="#main">Skip to main content</a>
     <header class="nav" id="nav">
       <div class="container nav-inner">
-        <a href="/" class="nav-logo" aria-label="${BRAND}, home">${logoMark}${BRAND}</a>
+        <a href="/" class="nav-logo" aria-label="${BRAND}, home">${logoMark}</a>
         <nav aria-label="Main navigation">
           <ul class="nav-links" id="navLinks">
             ${links}
@@ -60,7 +54,7 @@
       <div class="container">
         <div class="footer-grid">
           <div class="footer-brand">
-            <a href="/" class="nav-logo" aria-label="${BRAND}, home">${logoMark}${BRAND}</a>
+            <a href="/" class="nav-logo" aria-label="${BRAND}, home">${logoMark}</a>
             <p>Websites that bring customers, and simple dashboards that help you manage them. Proudly serving Malé, Hulhumalé and all of the Maldives.</p>
             <address style="margin-top:1rem; font-style:normal; font-size:0.86rem; color:var(--text-faint); line-height:1.6">
               H. Miraaz, Ground Floor<br>
