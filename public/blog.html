@@ -71,6 +71,7 @@
       function renderList(posts) {
         grid.innerHTML = posts.map((p) => `
           <div class="glass card post-card reveal visible">
+            ${p.image ? `<div class="card-media"><img loading="lazy" decoding="async" src="${esc(p.image)}" alt=""></div>` : ''}
             <div><span class="tag">${esc(p.tag)}</span></div>
             <time datetime="${esc(p.date)}">${fmtDate(p.date)}, ${p.readMinutes} min read</time>
             <h3><a href="/blog?post=${encodeURIComponent(p.slug)}">${esc(p.title)}</a></h3>
@@ -87,6 +88,7 @@
           <span class="tag">${esc(p.tag)}</span>
           <h1 style="margin:1rem 0">${esc(p.title)}</h1>
           <time class="mono" style="color:var(--text-faint)" datetime="${esc(p.date)}">${fmtDate(p.date)}, ${p.readMinutes} min read</time>
+          ${p.image ? `<img loading="lazy" decoding="async" src="${esc(p.image)}" alt="" style="width:100%; height:auto; aspect-ratio:16/9; object-fit:cover; border-radius:var(--radius); margin:1.6rem 0; border:1px solid var(--border)">` : ''}
           <hr class="divider" style="margin:1.6rem 0">
           ${p.body.split('\n\n').map((par) => `<p style="margin-bottom:1.1rem; font-size:1.02rem">${esc(par)}</p>`).join('')}`;
         listSection.style.display = 'none';
