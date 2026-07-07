@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Portfolio &amp; Demo Concepts | Konolhi Web Solutions, Maldives</title>
+  <meta name="description" content="Demo concepts showing what we build: direct-booking guesthouse sites, restaurant reservation systems, salon booking, charter catalogues and business dashboards.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%232388f6'/%3E%3Cpath d='M4 12c2-3.2 4-4.8 8-4.8s6 1.6 8 4.8c-2 3.2-4 4.8-8 4.8s-6-1.6-8-4.8Z' fill='none' stroke='%23041020' stroke-width='2'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+  <script defer src="/js/components.js"></script>
+  <script defer src="/js/main.js"></script>
+  <style>
+    .demo-hero-bar { height: 10px; border-radius: 6px; background: var(--gradient); opacity: 0.85; margin-bottom: 0.9rem; width: 55%; }
+    .demo-line { height: 8px; border-radius: 5px; background: var(--surface-strong); margin-bottom: 0.6rem; }
+    .demo-chip { display:inline-block; height: 26px; width: 84px; border-radius: 8px; background: var(--accent-soft); border:1px solid rgba(59,130,246,0.3); margin-right:0.4rem; }
+    .demo-kpi { display:grid; grid-template-columns:repeat(3,1fr); gap:0.5rem; margin-bottom:0.8rem; }
+    .demo-kpi i { display:block; height: 44px; border-radius: 9px; background: var(--surface-strong); border:1px solid var(--border); }
+    .demo-bars { display:flex; align-items:flex-end; gap:6px; height:56px; }
+    .demo-bars i { flex:1; border-radius:4px 4px 0 0; background:linear-gradient(180deg, #3B82F6, #22D3EE); opacity:0.75; }
+  </style>
+</head>
+<body>
+<main id="main">
+
+  <section class="page-hero">
+    <div class="container">
+      <span class="eyebrow">Portfolio</span>
+      <h1 style="margin-top:1rem">What we <span class="grad-text">build</span></h1>
+      <p class="lede">These are demo concepts based on real systems we build, shown as anonymised examples so you can see how each one works.</p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:1rem">
+    <div class="container grid grid-2">
+
+      <div class="mock-window reveal">
+        <div class="mock-bar"><i></i><i></i><i></i><span class="mock-url">coralstay-guesthouse.mv</span></div>
+        <div class="mock-body">
+          <div class="demo-hero-bar"></div>
+          <div class="demo-line" style="width:88%"></div>
+          <div class="demo-line" style="width:70%"></div>
+          <div style="margin:0.9rem 0 0.4rem"><span class="demo-chip"></span><span class="demo-chip"></span><span class="demo-chip" style="background:var(--gradient);opacity:0.8"></span></div>
+          <div class="demo-line" style="width:45%; margin-top:0.8rem"></div>
+        </div>
+        <div class="mock-caption">
+          <b>Direct-Booking Guesthouse Site</b>
+          <span>Live room availability, deposit checkout, guest FAQ, built to win bookings back from 15% OTA commissions.</span>
+        </div>
+      </div>
+
+      <div class="mock-window reveal">
+        <div class="mock-bar"><i></i><i></i><i></i><span class="mock-url">app.reef-marine.mv/dashboard</span></div>
+        <div class="mock-body">
+          <div class="demo-kpi"><i></i><i></i><i></i></div>
+          <div class="demo-bars"><i style="height:40%"></i><i style="height:65%"></i><i style="height:50%"></i><i style="height:80%"></i><i style="height:60%"></i><i style="height:95%"></i><i style="height:72%"></i></div>
+        </div>
+        <div class="mock-caption">
+          <b>Charter Operations Dashboard</b>
+          <span>Bookings calendar, Lead CRM and monthly revenue report for a dive and excursion operator, all in one place.</span>
+        </div>
+      </div>
+
+      <div class="mock-window reveal">
+        <div class="mock-bar"><i></i><i></i><i></i><span class="mock-url">maakana-kitchen.mv/reserve</span></div>
+        <div class="mock-body">
+          <div class="demo-hero-bar" style="width:40%"></div>
+          <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:0.5rem;margin:0.8rem 0">
+            <i style="display:block;height:34px;border-radius:8px;background:var(--surface-strong);border:1px solid var(--border)"></i>
+            <i style="display:block;height:34px;border-radius:8px;background:var(--surface-strong);border:1px solid var(--border)"></i>
+            <i style="display:block;height:34px;border-radius:8px;background:var(--accent-soft);border:1px solid rgba(34,211,238,0.5)"></i>
+            <i style="display:block;height:34px;border-radius:8px;background:var(--surface-strong);border:1px solid var(--border)"></i>
+          </div>
+          <div class="demo-line" style="width:60%"></div>
+          <div class="demo-line" style="width:35%"></div>
+        </div>
+        <div class="mock-caption">
+          <b>Restaurant Menu &amp; Reservations</b>
+          <span>Always-current menu, time-slot reservations with confirmations, no more requests lost during the dinner rush.</span>
+        </div>
+      </div>
+
+      <div class="mock-window reveal">
+        <div class="mock-bar"><i></i><i></i><i></i><span class="mock-url">velaa-salon.mv/book</span></div>
+        <div class="mock-body">
+          <div class="demo-line" style="width:50%; height:10px"></div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;margin:0.8rem 0">
+            <i style="display:block;height:52px;border-radius:10px;background:var(--surface-strong);border:1px solid var(--border)"></i>
+            <i style="display:block;height:52px;border-radius:10px;background:var(--accent-soft);border:1px solid rgba(34,211,238,0.5)"></i>
+          </div>
+          <div class="demo-line" style="width:75%"></div>
+          <div class="demo-line" style="width:42%"></div>
+        </div>
+        <div class="mock-caption">
+          <b>Salon Appointment System</b>
+          <span>Per-stylist time slots, deposits on premium services, automatic reminders, no-shows cut, DM chaos gone.</span>
+        </div>
+      </div>
+
+      <div class="mock-window reveal">
+        <div class="mock-bar"><i></i><i></i><i></i><span class="mock-url">hudhu-build.mv</span></div>
+        <div class="mock-body">
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0.5rem;margin-bottom:0.8rem">
+            <i style="display:block;height:58px;border-radius:9px;background:var(--surface-strong);border:1px solid var(--border)"></i>
+            <i style="display:block;height:58px;border-radius:9px;background:var(--surface-strong);border:1px solid var(--border)"></i>
+            <i style="display:block;height:58px;border-radius:9px;background:var(--surface-strong);border:1px solid var(--border)"></i>
+          </div>
+          <div class="demo-line" style="width:80%"></div>
+          <div class="demo-line" style="width:55%"></div>
+        </div>
+        <div class="mock-caption">
+          <b>Construction Portfolio + Quote Requests</b>
+          <span>Project gallery that wins shortlists, structured quotation requests, and a task board for site teams.</span>
+        </div>
+      </div>
+
+      <div class="mock-window reveal">
+        <div class="mock-bar"><i></i><i></i><i></i><span class="mock-url">portal.finolhu-services.mv</span></div>
+        <div class="mock-body">
+          <div class="demo-kpi"><i></i><i></i><i></i></div>
+          <div class="demo-line" style="width:90%"></div>
+          <div class="demo-line" style="width:66%"></div>
+          <div class="demo-line" style="width:74%"></div>
+        </div>
+        <div class="mock-caption">
+          <b>Customer Portal + Maintenance Tickets</b>
+          <span>Tenants log issues, teams get assigned, owners see status, group-chat repair chaos replaced with a tracked queue.</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="container">
+      <div class="cta-band reveal">
+        <h2>Want to see a concept for your business?</h2>
+        <p>Tell us your industry and we'll walk you through a live demo of exactly what your website and dashboard could look like.</p>
+        <div class="hero-ctas">
+          <a href="/contact" class="btn btn-primary btn-lg">Request a Demo Walkthrough</a>
+          <a href="https://wa.me/9609987899?text=Hi%20Konolhi!%20Can%20I%20see%20a%20demo%20for%20my%20industry%3F" target="_blank" rel="noopener" class="btn btn-whatsapp btn-lg">Ask on WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+</body>
+</html>

@@ -1,0 +1,7 @@
+node_modules/
+data/enquiries.json
+data/review-requests.json
+konolhi-site.zip
+.env
+*.log
+.DS_Store

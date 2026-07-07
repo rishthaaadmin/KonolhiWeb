@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Blog, Plain-Language Advice for Business Owners | Konolhi Web Solutions</title>
+  <meta name="description" content="Simple, non-technical advice for Maldivian business owners: getting found on Google, capturing enquiries, and running your business with simple systems.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%232388f6'/%3E%3Cpath d='M4 12c2-3.2 4-4.8 8-4.8s6 1.6 8 4.8c-2 3.2-4 4.8-8 4.8s-6-1.6-8-4.8Z' fill='none' stroke='%23041020' stroke-width='2'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+  <script defer src="/js/components.js"></script>
+  <script defer src="/js/main.js"></script>
+</head>
+<body>
+<main id="main">
+
+  <section class="page-hero">
+    <div class="container">
+      <span class="eyebrow">Blog</span>
+      <h1 style="margin-top:1rem">Business advice, <span class="grad-text">zero jargon</span></h1>
+      <p class="lede">Short, practical reads for Maldivian business owners, how customers find you, why enquiries go missing, and what simple systems can fix.</p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:1rem">
+    <div class="container">
+      <div class="grid grid-2" id="postGrid" aria-live="polite">
+        <div class="skeleton" aria-hidden="true"></div>
+        <div class="skeleton" aria-hidden="true"></div>
+        <div class="skeleton" aria-hidden="true"></div>
+        <div class="skeleton" aria-hidden="true"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- single post view -->
+  <section class="section" id="postView" style="display:none; padding-top:1rem">
+    <div class="container" style="max-width:760px">
+      <a href="/blog" class="btn btn-ghost btn-sm" id="backToList" style="margin-bottom:2rem">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5m6 6-6-6 6-6"/></svg>
+        All articles
+      </a>
+      <article id="postArticle"></article>
+      <div class="cta-band" style="margin-top:3rem">
+        <h2 style="font-size:1.5rem">Want this working in your business?</h2>
+        <p>Get a free review of your online presence, we'll show you exactly what's leaking.</p>
+        <div class="hero-ctas"><a href="/free-review" class="btn btn-primary">Get My Free Review</a></div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    (function () {
+      const grid = document.getElementById('postGrid');
+      const listSection = grid.closest('.section');
+      const postView = document.getElementById('postView');
+      const article = document.getElementById('postArticle');
+
+      function esc(s) {
+        const d = document.createElement('div');
+        d.textContent = s;
+        return d.innerHTML;
+      }
+
+      function fmtDate(iso) {
+        return new Date(iso + 'T00:00:00').toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+      }
+
+      function renderList(posts) {
+        grid.innerHTML = posts.map((p) => `
+          <div class="glass card post-card reveal visible">
+            <div><span class="tag">${esc(p.tag)}</span></div>
+            <time datetime="${esc(p.date)}">${fmtDate(p.date)}, ${p.readMinutes} min read</time>
+            <h3><a href="/blog?post=${encodeURIComponent(p.slug)}">${esc(p.title)}</a></h3>
+            <p style="font-size:0.94rem">${esc(p.excerpt)}</p>
+            <a class="read-more" href="/blog?post=${encodeURIComponent(p.slug)}">Read article
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m-6-6 6 6-6 6"/></svg>
+            </a>
+          </div>`).join('');
+      }
+
+      function renderPost(p) {
+        document.title = p.title + ' | Konolhi Web Solutions';
+        article.innerHTML = `
+          <span class="tag">${esc(p.tag)}</span>
+          <h1 style="margin:1rem 0">${esc(p.title)}</h1>
+          <time class="mono" style="color:var(--text-faint)" datetime="${esc(p.date)}">${fmtDate(p.date)}, ${p.readMinutes} min read</time>
+          <hr class="divider" style="margin:1.6rem 0">
+          ${p.body.split('\n\n').map((par) => `<p style="margin-bottom:1.1rem; font-size:1.02rem">${esc(par)}</p>`).join('')}`;
+        listSection.style.display = 'none';
+        postView.style.display = 'block';
+      }
+
+      async function init() {
+        const slug = new URLSearchParams(location.search).get('post');
+        try {
+          // Static JSON file so the blog works on any host, no backend needed.
+          const res = await fetch('/data/posts.json');
+          const posts = await res.json();
+          if (slug) {
+            const post = posts.find((p) => p.slug === slug);
+            if (post) return renderPost(post);
+          }
+          renderList(posts);
+        } catch {
+          grid.innerHTML = '<p>Could not load articles right now. Please refresh the page.</p>';
+        }
+      }
+      init();
+    })();
+  </script>
+
+</main>
+</body>
+</html>
