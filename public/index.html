@@ -12,15 +12,25 @@
   <link rel="stylesheet" href="/css/main.css">
   <script defer src="/js/components.js"></script>
   <script defer src="/js/main.js"></script>
+  <script defer src="/js/hero-topo.js"></script>
 </head>
 <body>
 <main id="main">
 
   <!-- ============ HERO ============ -->
-  <section class="hero hero-bg">
-    <video class="hero-bg-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
-      <source src="/assets/hero.mp4" type="video/mp4">
-    </video>
+  <section class="hero hero-topo">
+    <div class="topo-viewport" aria-hidden="true">
+      <div class="topo-canvas" id="topoCanvas">
+        <div class="topo-layer" id="topoLayer">
+          <video autoplay muted loop playsinline preload="metadata">
+            <source src="/assets/hero.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="topo-contours"></div>
+      </div>
+    </div>
+    <svg style="position:absolute;width:0;height:0" aria-hidden="true"><filter id="heroGrain"><feTurbulence type="fractalNoise" baseFrequency="0.72" numOctaves="3"/><feColorMatrix type="saturate" values="0"/></filter></svg>
+    <div class="topo-grain" aria-hidden="true"></div>
     <div class="container hero-grid hero-grid-solo">
       <div>
         <span class="eyebrow">
