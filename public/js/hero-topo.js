@@ -1,13 +1,17 @@
 /* 3D topographic hero: mouse parallax + entrance (vanilla port of Halide effect). */
 (function () {
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // Skip JS transforms on touch/small screens — let CSS handle a flatter static tilt.
+  const noMotion = reduce
+    || window.matchMedia('(max-width: 768px)').matches
+    || window.matchMedia('(hover: none)').matches;
 
   document.addEventListener('DOMContentLoaded', () => {
     const canvas = document.getElementById('topoCanvas');
     const layer = document.getElementById('topoLayer');
     if (!canvas) return;
 
-    if (reduce) { canvas.style.transform = 'rotateX(55deg) rotateZ(-25deg)'; return; }
+    if (noMotion) return; // CSS defines the transform; no inline override, no parallax
 
     // Entrance
     canvas.style.opacity = '0';
