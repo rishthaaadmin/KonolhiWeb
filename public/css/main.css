@@ -567,6 +567,14 @@ main { display: block; }
 .hero-topo .container { position: relative; z-index: 3; }
 .hero-grid-solo { grid-template-columns: 1fr; }
 .hero-grid-solo > div { max-width: 44rem; }
+/* Centered hero (classy-hero text layout over the topo background) */
+.hero-centered { text-align: center; place-items: center; }
+.hero-centered > div { margin-inline: auto; max-width: 56rem; }
+.hero-centered .eyebrow { margin-inline: auto; }
+.hero-centered .lede { margin-inline: auto; max-width: 34rem; }
+.hero-centered .hero-ctas { justify-content: center; }
+.hero-centered .text-rotate { justify-content: center; }
+.hero-centered h1 { text-align: center; }
 @media (prefers-reduced-motion: reduce) {
   .topo-canvas { transition: none; }
 }
