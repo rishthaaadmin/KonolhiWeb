@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="/css/main.css">
   <script defer src="/js/components.js"></script>
   <script defer src="/js/main.js"></script>
+  <script defer src="/js/card-stack.js"></script>
   <style>
     .demo-hero-bar { height: 10px; border-radius: 6px; background: var(--gradient); opacity: 0.85; margin-bottom: 0.9rem; width: 55%; }
     .demo-line { height: 8px; border-radius: 5px; background: var(--surface-strong); margin-bottom: 0.6rem; }
@@ -40,36 +41,16 @@
         <span class="eyebrow">Live client sites</span>
         <h2 style="margin-top:0.9rem">Websites working right now</h2>
       </div>
-      <div class="grid grid-3">
-
-        <a class="mock-window reveal" style="display:block" href="https://www.rishthaa.mv" target="_blank" rel="noopener">
-          <div class="mock-bar"><i></i><i></i><i></i><span class="mock-url">rishthaa.mv</span></div>
-          <img class="mock-shot" loading="lazy" decoding="async" src="/assets/portfolio/rishthaa.jpg" alt="Rishthaa Company website">
-          <div class="mock-caption">
-            <b>Rishthaa Company</b>
-            <span>Construction &amp; telecom firm. Corporate site with a searchable 25-project portfolio, services and careers. <span style="color:var(--accent-2)">Visit site ↗</span></span>
-          </div>
-        </a>
-
-        <a class="mock-window reveal" style="display:block" href="https://www.liquidsharkdivers-fvm.com" target="_blank" rel="noopener">
-          <div class="mock-bar"><i></i><i></i><i></i><span class="mock-url">liquidsharkdivers-fvm.com</span></div>
-          <img class="mock-shot" loading="lazy" decoding="async" src="/assets/portfolio/liquidshark.jpg" alt="Liquid Shark Divers website">
-          <div class="mock-caption">
-            <b>Liquid Shark Divers</b>
-            <span>Fuvahmulah dive centre. Bold booking site with packages, hotels, reviews and enquiry flow. <span style="color:var(--accent-2)">Visit site ↗</span></span>
-          </div>
-        </a>
-
-        <a class="mock-window reveal" style="display:block" href="https://ogholidays.com" target="_blank" rel="noopener">
-          <div class="mock-bar"><i></i><i></i><i></i><span class="mock-url">ogholidays.com</span></div>
-          <img class="mock-shot" loading="lazy" decoding="async" src="/assets/portfolio/ogholidays.jpg" alt="Off Grid Holidays website">
-          <div class="mock-caption">
-            <b>Off Grid Holidays</b>
-            <span>Maldives island-experience brand. Editorial travel site with packages and enquiry capture. <span style="color:var(--accent-2)">Visit site ↗</span></span>
-          </div>
-        </a>
-
+      <div class="cardstack reveal" data-autoadvance="4000" data-spread="40">
+        <script type="application/json" class="cardstack-data">
+          [
+            {"title":"Rishthaa Company","description":"Construction & telecom — searchable 25-project portfolio","imageSrc":"/assets/portfolio/rishthaa.jpg","href":"https://www.rishthaa.mv"},
+            {"title":"Liquid Shark Divers","description":"Fuvahmulah dive centre — bold booking site","imageSrc":"/assets/portfolio/liquidshark.jpg","href":"https://www.liquidsharkdivers-fvm.com"},
+            {"title":"Off Grid Holidays","description":"Maldives island-experience travel brand","imageSrc":"/assets/portfolio/ogholidays.jpg","href":"https://ogholidays.com"}
+          ]
+        </script>
       </div>
+      <p style="text-align:center; margin-top:1rem; font-size:0.85rem; color:var(--text-faint)">Drag, swipe, or tap a card — click the active card to open the site.</p>
     </div>
   </section>
 
