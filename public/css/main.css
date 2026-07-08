@@ -461,8 +461,8 @@ main { display: block; }
   inset: 0;
   z-index: 1;
   background:
-    linear-gradient(100deg, rgba(5,10,22,0.94) 0%, rgba(5,10,22,0.80) 42%, rgba(5,10,22,0.55) 100%),
-    linear-gradient(0deg, var(--bg) 2%, rgba(5,10,22,0) 40%);
+    linear-gradient(100deg, rgba(5,10,22,0.90) 0%, rgba(5,10,22,0.55) 44%, rgba(5,10,22,0.12) 100%),
+    linear-gradient(0deg, var(--bg) 1%, rgba(5,10,22,0) 38%);
 }
 .hero-bg .container { position: relative; z-index: 2; }
 .hero-grid-solo { grid-template-columns: 1fr; }
