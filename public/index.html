@@ -17,8 +17,11 @@
 <main id="main">
 
   <!-- ============ HERO ============ -->
-  <section class="hero">
-    <div class="container hero-grid">
+  <section class="hero hero-bg">
+    <video class="hero-bg-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
+      <source src="/assets/hero.mp4" type="video/mp4">
+    </video>
+    <div class="container hero-grid hero-grid-solo">
       <div>
         <span class="eyebrow">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
@@ -40,12 +43,6 @@
         </div>
       </div>
 
-      <!-- Hero video -->
-      <div class="hero-video glass reveal">
-        <video autoplay muted loop playsinline preload="metadata" aria-label="How Konolhi turns online searches into booked customers">
-          <source src="/assets/hero.mp4" type="video/mp4">
-        </video>
-      </div>
     </div>
   </section>
 
