@@ -1,37 +1,39 @@
-/* Interactive hero background: subtle cursor parallax on a full-bleed image. */
+/* Static hero image + cursor-driven glow (circuit lines/dots light up under the pointer). */
 (function () {
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const noMotion = reduce
-    || window.matchMedia('(hover: none)').matches
-    || window.matchMedia('(max-width: 768px)').matches;
+  const noHover = window.matchMedia('(hover: none)').matches;
 
   document.addEventListener('DOMContentLoaded', () => {
     const canvas = document.getElementById('topoCanvas');
     const layer = document.getElementById('topoLayer');
     if (!canvas) return;
 
-    if (noMotion) { canvas.style.transform = 'scale(1.02)'; return; }
+    // Image stays static (gentle one-time fade-in only).
+    canvas.style.transform = 'scale(1.04)';
+    if (!reduce) {
+      canvas.style.opacity = '0';
+      setTimeout(() => {
+        canvas.style.transition = 'opacity 1.1s ease';
+        canvas.style.opacity = '1';
+      }, 150);
+    }
 
-    // Entrance
-    canvas.style.opacity = '0';
-    canvas.style.transform = 'scale(1.1)';
-    setTimeout(() => {
-      canvas.style.transition = 'opacity 1.2s ease, transform 1.6s cubic-bezier(0.16,1,0.3,1)';
-      canvas.style.opacity = '1';
-      canvas.style.transform = 'translate(0,0) scale(1.05)';
-    }, 180);
+    if (reduce || noHover || !layer) return;
 
-    // Cursor parallax (rAF-throttled)
-    let tx = 0, ty = 0, raf = null;
+    const hero = canvas.closest('.hero');
+    let raf = null, mx = 0, my = 0;
     function apply() {
       raf = null;
-      canvas.style.transform = `translate(${tx}px, ${ty}px) scale(1.06)`;
-      if (layer) layer.style.transform = `translate(${tx * 0.4}px, ${ty * 0.4}px)`;
+      layer.style.setProperty('--mx', mx + 'px');
+      layer.style.setProperty('--my', my + 'px');
     }
-    window.addEventListener('mousemove', (e) => {
-      tx = (window.innerWidth / 2 - e.pageX) / 18;
-      ty = (window.innerHeight / 2 - e.pageY) / 18;
+    hero.addEventListener('pointermove', (e) => {
+      const rect = layer.getBoundingClientRect();
+      mx = e.clientX - rect.left;
+      my = e.clientY - rect.top;
+      layer.classList.add('glow-on');
       if (!raf) raf = requestAnimationFrame(apply);
     }, { passive: true });
+    hero.addEventListener('pointerleave', () => layer.classList.remove('glow-on'));
   });
 })();
