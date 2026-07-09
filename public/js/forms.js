@@ -70,6 +70,9 @@
     if (grp && ![...form.querySelectorAll(`input[name="${grp}"]`)].some((c) => c.checked)) {
       errors[grp] = 'Please select at least one option.';
     }
+    form.querySelectorAll('input[type="checkbox"][required]').forEach((cb) => {
+      if (!cb.checked) errors[cb.name] = 'Please tick this box to continue.';
+    });
     return errors;
   }
 

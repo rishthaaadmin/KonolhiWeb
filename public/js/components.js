@@ -77,6 +77,7 @@
               <li><a href="/portfolio">Portfolio</a></li>
               <li><a href="/blog">Blog</a></li>
               <li><a href="/free-review">Free Website Review</a></li>
+              <li><a href="/privacy">Privacy Policy</a></li>
             </ul>
           </div>
           <div>

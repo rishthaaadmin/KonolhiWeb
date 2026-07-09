@@ -832,6 +832,25 @@ main { display: block; }
 .field.invalid input, .field.invalid select, .field.invalid textarea { border-color: var(--danger); }
 .field.invalid .error-msg { display: block; }
 
+.consent-label {
+  display: flex;
+  gap: 0.6rem;
+  align-items: flex-start;
+  font-size: 0.86rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  line-height: 1.5;
+}
+.consent-label input {
+  accent-color: var(--accent);
+  width: 17px; height: 17px;
+  margin-top: 2px;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+.consent-label a { color: var(--accent-2); }
+.field.consent.invalid .consent-label { color: var(--danger); }
+
 .check-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
