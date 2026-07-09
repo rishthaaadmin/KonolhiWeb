@@ -427,7 +427,7 @@ main { display: block; }
   border-radius: 999px;
 }
 /* Text rotate */
-.text-rotate { display: inline-flex; overflow: hidden; vertical-align: top; white-space: pre; }
+.text-rotate { display: inline-flex; overflow: hidden; vertical-align: top; white-space: pre; min-height: 1em; align-items: flex-start; }
 .text-rotate .tr-char {
   display: inline-block;
   transform: translateY(110%);
