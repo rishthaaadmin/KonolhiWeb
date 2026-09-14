@@ -315,13 +315,6 @@ main { display: block; }
 .cardstack-card .cs-content { position: absolute; left: 0; right: 0; bottom: 0; padding: 1.1rem 1.3rem; }
 .cardstack-card .cs-content b { display: block; color: #fff; font-family: var(--font-display); font-size: 1.05rem; }
 .cardstack-card .cs-content span { display: block; font-size: 0.85rem; color: rgba(255, 255, 255, 0.82); }
-.cardstack-card .cs-content .cs-visit {
-  display: none; margin-top: 0.8rem; align-items: center; gap: 0.4rem;
-  font-size: 0.8rem; font-weight: 600; color: #04101f;
-  background: var(--accent-2); padding: 0.42rem 0.8rem; border-radius: 999px; width: max-content;
-  box-shadow: 0 6px 18px rgba(34, 211, 238, 0.3);
-}
-.cardstack-card.active .cs-content .cs-visit { display: inline-flex; }
 .cardstack-dots { display: flex; gap: 0.55rem; align-items: center; justify-content: center; margin-top: 1.4rem; }
 .cardstack-dots button {
   width: 9px; height: 9px; border-radius: 50%; border: 0; padding: 0; cursor: pointer;

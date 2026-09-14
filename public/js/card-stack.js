@@ -47,7 +47,6 @@
         <div class="cs-content">
           <b>${esc(item.title || '')}</b>
           ${item.description ? `<span>${esc(item.description)}</span>` : ''}
-          ${item.href ? '<span class="cs-visit">Visit site<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></span>' : ''}
         </div>`;
       card.addEventListener('click', () => {
         if (card._dragged) return;
