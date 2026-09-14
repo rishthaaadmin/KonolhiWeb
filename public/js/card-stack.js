@@ -47,12 +47,17 @@
         <div class="cs-content">
           <b>${esc(item.title || '')}</b>
           ${item.description ? `<span>${esc(item.description)}</span>` : ''}
+          ${item.href ? '<span class="cs-visit">Visit site<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></span>' : ''}
         </div>`;
-      card.addEventListener('click', (e) => {
+      card.addEventListener('click', () => {
         if (card._dragged) return;
         if (i === active) { if (item.href) window.open(item.href, '_blank', 'noopener'); }
-        else setActive(i);
+        else userGo(i);
       });
+      // Pause the rotation only while the cursor is on the FRONT card, so a
+      // lazy viewer can read and click it; motion continues everywhere else.
+      card.addEventListener('mouseenter', () => { if (i === active) hovering = true; });
+      card.addEventListener('mouseleave', () => { hovering = false; hold(1200); });
       track.appendChild(card);
       return card;
     });
@@ -62,7 +67,7 @@
       const b = document.createElement('button');
       b.type = 'button';
       b.setAttribute('aria-label', `Go to ${it.title || 'card ' + (i + 1)}`);
-      b.addEventListener('click', () => setActive(i));
+      b.addEventListener('click', () => userGo(i));
       dotsWrap.appendChild(b);
       return b;
     });
@@ -119,6 +124,13 @@
     const next = () => setActive(active + 1);
     const prev = () => setActive(active - 1);
 
+    // Interaction hold: after a manual action, stop auto-rotating for a beat
+    // so the viewer can read/click the card they just brought forward.
+    let holdUntil = 0;
+    let hovering = false; // true only while the cursor is over the front card
+    function hold(ms) { holdUntil = Date.now() + ms; }
+    function userGo(i) { hold(6000); setActive(i); }
+
     // drag / swipe on active card
     let startX = null, activeCard = null;
     stage.addEventListener('pointerdown', (e) => {
@@ -141,8 +153,8 @@
       startX = null;
       activeCard.style.transition = '';
       const threshold = Math.min(140, cardWidth() * 0.22);
-      if (dx > threshold) prev();
-      else if (dx < -threshold) next();
+      if (dx > threshold) userGo(active - 1);
+      else if (dx < -threshold) userGo(active + 1);
       else layout();
       setTimeout(() => { if (activeCard) activeCard._dragged = false; }, 0);
     }
@@ -151,20 +163,21 @@
 
     // keyboard
     stage.addEventListener('keydown', (e) => {
-      if (e.key === 'ArrowLeft') { prev(); e.preventDefault(); }
-      if (e.key === 'ArrowRight') { next(); e.preventDefault(); }
+      if (e.key === 'ArrowLeft') { userGo(active - 1); e.preventDefault(); }
+      if (e.key === 'ArrowRight') { userGo(active + 1); e.preventDefault(); }
     });
 
-    // autoplay
-    let timer = null, hovering = false;
+    // autoplay — keeps rotating on its own; only pauses while the cursor is on
+    // the front card (hovering) or briefly after a manual interaction (holdUntil).
+    let timer = null;
     function startAuto() {
       if (!cfg.autoAdvance || reduce) return;
       stopAuto();
-      timer = window.setInterval(() => { if (!hovering) next(); }, Math.max(1200, cfg.autoAdvance));
+      timer = window.setInterval(() => {
+        if (!hovering && Date.now() >= holdUntil) next();
+      }, Math.max(1200, cfg.autoAdvance));
     }
     function stopAuto() { if (timer) { clearInterval(timer); timer = null; } }
-    root.addEventListener('mouseenter', () => { hovering = true; });
-    root.addEventListener('mouseleave', () => { hovering = false; });
 
     window.addEventListener('resize', layout, { passive: true });
     layout();
