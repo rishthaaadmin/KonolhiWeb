@@ -42,7 +42,7 @@
     const cards = items.map((item, i) => {
       const card = el('div', 'cardstack-card');
       card.innerHTML = `
-        ${item.imageSrc ? `<img src="${esc(item.imageSrc)}" alt="${esc(item.title || '')}" draggable="false">` : ''}
+        ${item.imageSrc ? `<img src="${esc(item.imageSrc)}" alt="${esc((item.title || '') + (item.description ? ', ' + item.description : '') + ' — website by Konolhi Web Solutions')}" draggable="false">` : ''}
         <div class="cs-overlay"></div>
         <div class="cs-content">
           <b>${esc(item.title || '')}</b>

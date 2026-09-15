@@ -14,7 +14,7 @@
     { href: '/blog', label: 'Blog' }
   ];
 
-  const logoMark = `<img class="brand-logo" src="/assets/konolhi-logo.png" alt="Konolhi" width="112" height="100">`;
+  const logoMark = `<img class="brand-logo" src="/assets/konolhi-logo.png" alt="Konolhi Web Solutions logo" width="112" height="100">`;
 
   function currentPath() {
     let p = location.pathname.replace(/\.html$/, '').replace(/\/index$/, '/');

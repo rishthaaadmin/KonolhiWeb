@@ -10,6 +10,28 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="canonical" href="https://konolhi.com/blog">
+  <meta name="keywords" content="web design tips Maldives, small business website advice, online booking guide Maldives, Konolhi blog">
+  <meta name="author" content="Konolhi Web Solutions">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="geo.region" content="MV">
+  <meta name="geo.placename" content="Malé, Maldives">
+  <meta name="ICBM" content="4.1755, 73.5093">
+  <meta name="theme-color" content="#050A16">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Konolhi Web Solutions">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:title" content="Blog, Plain-Language Advice for Business Owners | Konolhi Web Solutions">
+  <meta property="og:description" content="Simple, non-technical advice for Maldivian business owners: getting found on Google, capturing enquiries, and running your business with simple systems.">
+  <meta property="og:url" content="https://konolhi.com/blog">
+  <meta property="og:image" content="https://konolhi.com/assets/og-cover.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Konolhi Web Solutions, web design and business systems in the Maldives">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Blog, Plain-Language Advice for Business Owners | Konolhi Web Solutions">
+  <meta name="twitter:description" content="Simple, non-technical advice for Maldivian business owners: getting found on Google, capturing enquiries, and running your business with simple systems.">
+  <meta name="twitter:image" content="https://konolhi.com/assets/og-cover.jpg">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://konolhi.com/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://konolhi.com/blog"}]}</script>
   <link rel="stylesheet" href="/css/main.css">
   <script defer src="/js/components.js"></script>
   <script defer src="/js/main.js"></script>
@@ -72,7 +94,7 @@
       function renderList(posts) {
         grid.innerHTML = posts.map((p) => `
           <div class="glass card post-card reveal visible">
-            ${p.image ? `<div class="card-media"><img loading="lazy" decoding="async" src="${esc(p.image)}" alt=""></div>` : ''}
+            ${p.image ? `<div class="card-media"><img loading="lazy" decoding="async" src="${esc(p.image)}" alt="${esc(p.imageAlt || p.title || '')}"></div>` : ''}
             <div><span class="tag">${esc(p.tag)}</span></div>
             <time datetime="${esc(p.date)}">${fmtDate(p.date)}, ${p.readMinutes} min read</time>
             <h3><a href="/blog?post=${encodeURIComponent(p.slug)}">${esc(p.title)}</a></h3>
@@ -89,7 +111,7 @@
           <span class="tag">${esc(p.tag)}</span>
           <h1 style="margin:1rem 0">${esc(p.title)}</h1>
           <time class="mono" style="color:var(--text-faint)" datetime="${esc(p.date)}">${fmtDate(p.date)}, ${p.readMinutes} min read</time>
-          ${p.image ? `<img loading="lazy" decoding="async" src="${esc(p.image)}" alt="" style="width:100%; height:auto; aspect-ratio:16/9; object-fit:cover; border-radius:var(--radius); margin:1.6rem 0; border:1px solid var(--border)">` : ''}
+          ${p.image ? `<img loading="lazy" decoding="async" src="${esc(p.image)}" alt="${esc(p.imageAlt || p.title || '')}" style="width:100%; height:auto; aspect-ratio:16/9; object-fit:cover; border-radius:var(--radius); margin:1.6rem 0; border:1px solid var(--border)">` : ''}
           <hr class="divider" style="margin:1.6rem 0">
           ${p.body.split('\n\n').map((par) => `<p style="margin-bottom:1.1rem; font-size:1.02rem">${esc(par)}</p>`).join('')}`;
         listSection.style.display = 'none';
